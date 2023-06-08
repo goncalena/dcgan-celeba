@@ -11,6 +11,7 @@ To get ready images for modelling, firstly it is compulsory that turn to array a
 After preprocessing training data had (2000,64,64,3) shape.
 
 MODELLING
+
 GAN consists of two main blocks one of that is Generator the other of that is Discriminator. Generator ‘s aim is generate synthetic images like sample that go into it as input data. Initially, it begins with random noise as input and gradually learns to generate increasingly convincing samples that resemble the training data. The generator's primary objective is to produce outputs that are indistinguishable from real data.  Discriminator has to analysis which one of them real or fake that means created by Generator. The generator takes a point from the Input dimension as input and generates a new image.  Input dimension was taken 128 that is referred to latent dimension. Latent dimension has no meaning and typically it is a 100-dimensional hypersphere with each variable drawn from a Gaussian distribution with a mean of zero and a standard deviation of one. Through training, the generator learns to map points into the latent space with specific output images and this mapping will be different each time the model is trained. Typically, new images were generated using random points in the latent space. Taken a step further, points in the latent space can be constructed (e.g. all 0s, all 0.5s, or all 1s) and used as input or a query to generate a specific image.
 In Generator blocks images put into Dense layer with 8*8*128  layer size to get important features from images as much as possible. Then output of this layer was reshaped to 8,8,128. 
 With layer size 128,256,512 Conv2dTranspose functions was used to transposed convolutions which generally arises from the desire to use a transformation going in the opposite direction of a normal convolution from something that has the shape of the output of some convolution to something that has the shape of its input while maintaining a connectivity pattern that is compatible with said convolution. After each Conv2dTranspose, BatchNormazliation was used and because the use of it Activation function adding different from Conv2dTranspose layer. The reason of using 128, 256, 512 layer size depend on our intuitive.  Because of applying 128 latent dimension all images go into generator with these size so first Conv2dTranspose start with 128 layer size. Generally layer size is doubled during generator blocks but there is no limit to stop when reaching 256 or 512 layer size. However as increase number of layer size, the training is going to slow and it is so costly so using 3  Conv2dTranspose, each of them doubling previous  layer size and stopping 512 was decided.  
@@ -58,10 +59,14 @@ Periodically, evaluate the performance of the generator by generating images usi
 
 For training, 200 epoch size was choosen because of GPU limitation and time duration. If Epoch size  was increased, it would generated better images but for 200 epochs generated images as below:  
 
+
 <img width="468" alt="image" src="https://github.com/goncalena/dcgan-celeba/assets/116746888/299a1ab8-09e1-413e-be11-ad3a8ca27201">
 
 
+
 <img width="323" alt="image" src="https://github.com/goncalena/dcgan-celeba/assets/116746888/d904d5b4-1e13-4c07-a673-661ce3c3412e">
+
+
 
 <img width="503" alt="image" src="https://github.com/goncalena/dcgan-celeba/assets/116746888/a2134f35-a8e2-48b4-acb7-97be3b84f91e">
 
