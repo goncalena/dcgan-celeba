@@ -18,10 +18,10 @@ As activation function LeakyRelu was used, in GAN LeakyRelu and Tanh were mostly
 Leaky ReLU prevent this dying state by allowing some negative values to pass through. The whole idea behind making the Generator work is to receive gradient values from the Discriminator, and if the network is stuck in a dying state situation, the learning process won’t happen.
 The output of the Leaky ReLU activation function will be positive if the input is positive, and it will be a controlled negative value if the input is negative. Negative value is control by a parameter called alpha, which will introduce tolerance of the network by allowing some negative values to pass.
 
+ ![image](https://github.com/goncalena/dcgan-celeba/assets/116746888/9b9a7e15-3562-4ed7-aa20-1365beed6f5d)
 
- 
 
-(left) ReLU, (right) Leaky ReLU activation functions
+                           (left) ReLU, (right) Leaky ReLU activation functions
 
 
 Moreover, duirng generating images, kernel_size was choosen (4,4). In genereal 3,4,5 can be used as kernel size.  Stride is a parameter that works in conjunction with padding, the feature that adds blank, or empty pixels to the frame of the image to allow for a minimized reduction of size in the output layer. If padding=same that means image shape can stay same if not it reduces the size of images Therefore padding=same and strides =2 were proper fort his Project.
@@ -56,8 +56,10 @@ Throughout the training process, the generator and discriminator networks engage
 EVALUATION
 Periodically, evaluate the performance of the generator by generating images using random noise vectors and visually inspecting the output. You can also use quantitative metrics such as Inception Score or Frechet Inception Distance (FID) to assess the quality of the generated images. Besides, d_loss and g_loss were plotted after tarining. As seen above graph, they stabilized and there ware close to each other.
 
-For training, 200 epoch size was choosen because of GPU limitation and time duration. If Epoch size  was increased, it would generated better images but for 200 epochs generated images as below: 
-![image](https://github.com/goncalena/dcgan-celeba/assets/116746888/a38d181c-9979-47cf-ac7c-ea443ae2571a)
+For training, 200 epoch size was choosen because of GPU limitation and time duration. If Epoch size  was increased, it would generated better images but for 200 epochs generated images as below:  
+
+<img width="468" alt="image" src="https://github.com/goncalena/dcgan-celeba/assets/116746888/299a1ab8-09e1-413e-be11-ad3a8ca27201">
+
 
 <img width="323" alt="image" src="https://github.com/goncalena/dcgan-celeba/assets/116746888/d904d5b4-1e13-4c07-a673-661ce3c3412e">
 
